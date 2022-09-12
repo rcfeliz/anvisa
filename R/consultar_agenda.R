@@ -30,8 +30,7 @@ consultar_agenda <- function(data=NULL, pessoa=NULL) {
     stop("Não indique mais do que uma pessoa!")
   }
 
-  # agendas <- anvisa::agendas
-  agendas <- readr::read_rds("data-raw/agendas.rds")
+  agendas <- anvisa::agendas
 
   u_pessoa <- agendas$u_agenda[agendas$nome == pessoa]
 

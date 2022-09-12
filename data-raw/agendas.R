@@ -32,7 +32,7 @@ usethis::use_data(agendas, overwrite = TRUE)
 
 # parse agendas -----------------------------------------------------------
 
-agendas <- readr::read_rds("data-raw/agendas.rds")
+agendas <- anvisa::agendas
 
 data <- "2022-09-06" # certo
 data <- "2022-09-05"
