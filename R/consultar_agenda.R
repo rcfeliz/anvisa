@@ -70,6 +70,11 @@ consultar_agenda <- function(data=NULL, pessoa=NULL) {
       xml2::xml_text() |>
       stringr::str_squish()
 
+    if(rlang::is_empty(todos_locais) | length(todos_locais) != length(todos_compromissos)) { # essa condicional está errada
+      n <- length(todos_compromissos)
+      todos_locais <- NA_character_
+    }
+
   }
 
   tibble::tibble(
