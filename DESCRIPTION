@@ -18,9 +18,9 @@ Imports:
     glue,
     stringr,
     lubridate,
-    rlang,
-    dplyr
+    rlang
 Suggests: 
+    dplyr,
     purrr,
     readr,
     testthat (>= 3.0.0)

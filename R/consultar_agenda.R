@@ -11,7 +11,6 @@
 #' @example consultar_agenda("2022-09-06", "Antonio Barra Torres")
 #'
 #' @export
-
 consultar_agenda <- function(data=NULL, pessoa=NULL) {
 
   if(is.null(data)) {
@@ -31,10 +30,10 @@ consultar_agenda <- function(data=NULL, pessoa=NULL) {
   }
 
   # deixar as letras minúsculas para comparar: menor chance de erro!
-  agendas <- anvisa::agendas |>
-    dplyr::mutate(nome_lower = stringr::str_to_lower(nome))
 
-  pessoa_lower <- stringr::str_to_lower(pessoa)
+  agendas$nome_lower <- tolower(agendas$nome)
+
+  pessoa_lower <- tolower(pessoa)
 
 
   u_pessoa <- agendas$u_agenda[agendas$nome_lower == pessoa_lower]
