@@ -11,7 +11,6 @@
 #' @example consultar_agenda("2022-09-06", "Antonio Barra Torres")
 #'
 #' @export
-
 consultar_agenda <- function(data=NULL, pessoa=NULL) {
 
   if(is.null(data)) {
@@ -30,9 +29,14 @@ consultar_agenda <- function(data=NULL, pessoa=NULL) {
     stop("Não indique mais do que uma pessoa!")
   }
 
-  agendas <- anvisa::agendas
+  # deixar as letras minúsculas para comparar: menor chance de erro!
 
-  u_pessoa <- agendas$u_agenda[agendas$nome == pessoa]
+  agendas$nome_lower <- tolower(agendas$nome)
+
+  pessoa_lower <- tolower(pessoa)
+
+
+  u_pessoa <- agendas$u_agenda[agendas$nome_lower == pessoa_lower]
 
   if(length(u_pessoa) == 0) {
    stop("Esta pessoa não trabalha na Anvisa")
