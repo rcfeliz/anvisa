@@ -30,9 +30,14 @@ consultar_agenda <- function(data=NULL, pessoa=NULL) {
     stop("Não indique mais do que uma pessoa!")
   }
 
-  agendas <- anvisa::agendas
+  # deixar as letras minúsculas para comparar: menor chance de erro!
+  agendas <- anvisa::agendas |>
+    dplyr::mutate(nome_lower = stringr::str_to_lower(nome))
 
-  u_pessoa <- agendas$u_agenda[agendas$nome == pessoa]
+  pessoa_lower <- stringr::str_to_lower(pessoa)
+
+
+  u_pessoa <- agendas$u_agenda[agendas$nome_lower == pessoa_lower]
 
   if(length(u_pessoa) == 0) {
    stop("Esta pessoa não trabalha na Anvisa")
