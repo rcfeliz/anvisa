@@ -4,7 +4,6 @@ u_agendas <- "https://www.gov.br/anvisa/pt-br/acessoainformacao/Agendas"
 r_agendas <- httr::GET(u_agendas)
 h_agendas <- xml2::read_html(r_agendas)
 
-
 # hierarquias e órgãos ----------------------------------------------------
 
 todos_orgaos_h1 <- h_agendas |>
